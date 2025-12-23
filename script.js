@@ -9,14 +9,16 @@ window.addEventListener("load", () => {
   }, 3000)
 })
 
-// Canvas Animation
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+function resizeCanvas() {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+}
 
-// Code symbols for the background
+resizeCanvas()
+
 const codeSymbols = [
   "<",
   ">",
@@ -88,7 +90,7 @@ class CodeParticle {
 }
 
 const codeParticlesArray = []
-const numberOfCodeParticles = 80
+const numberOfCodeParticles = window.innerWidth < 768 ? 40 : 80
 
 for (let i = 0; i < numberOfCodeParticles; i++) {
   codeParticlesArray.push(new CodeParticle())
@@ -130,7 +132,7 @@ class GlowOrb {
 }
 
 const orbsArray = []
-const numberOfOrbs = 3
+const numberOfOrbs = window.innerWidth < 768 ? 2 : 3
 
 for (let i = 0; i < numberOfOrbs; i++) {
   orbsArray.push(new GlowOrb())
@@ -155,8 +157,7 @@ function animateCodeBackground() {
 animateCodeBackground()
 
 window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+  resizeCanvas()
 })
 
 // Typing Effect
@@ -199,11 +200,11 @@ function typeText() {
 
 setTimeout(typeText, 1000)
 
-// Mobile Menu Toggle
 const mobileToggle = document.getElementById("mobileToggle")
 const navMenu = document.getElementById("navMenu")
 
-mobileToggle.addEventListener("click", () => {
+mobileToggle.addEventListener("click", (e) => {
+  e.stopPropagation()
   mobileToggle.classList.toggle("active")
   navMenu.classList.toggle("active")
 })
@@ -214,6 +215,13 @@ navLinks.forEach((link) => {
     mobileToggle.classList.remove("active")
     navMenu.classList.remove("active")
   })
+})
+
+document.addEventListener("click", (e) => {
+  if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+    mobileToggle.classList.remove("active")
+    navMenu.classList.remove("active")
+  }
 })
 
 // Active Navigation on Scroll
@@ -245,7 +253,6 @@ window.addEventListener("scroll", () => {
   })
 })
 
-
 // Certificate Modal Functions
 const certificatesData = [
   {
@@ -253,15 +260,15 @@ const certificatesData = [
     issuer: "GSSoC",
     description:
       "As a Contributor in GirlScript Summer of Code 2025, demonstrating strong commitment, collaboration, and open-source development skills.",
-    image: "gssoc.jpg",
+    image: "https://placeholder.svg?height=400&width=600&query=GSSoC certificate badge",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
-    title: "Web Development Intern ",
+    title: "Web Development Intern",
     issuer: "Prodigy Infotech",
     description:
       "Successfully completed a 1-month Web Development Internship at Prodigy Infotech with outstanding performance, gaining hands-on experience in real-world web projects.",
-    image: "LOR prodigy Infotech.jpg",
+    image: "https://placeholder.svg?height=400&width=600&query=web development internship certificate",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -269,15 +276,15 @@ const certificatesData = [
     issuer: "TechXNinjas",
     description:
       "Recognized as a Top 200 Team member in Paranox 2.0, a national-level innovation hackathon, for creativity, teamwork, and qualifying for the pre-final pitching round.",
-    image: "TechXNinjas.jpg",
+    image: "https://placeholder.svg?height=400&width=600&query=hackathon certificate",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
-    title: "Key Contributor ",
+    title: "Key Contributor",
     issuer: "binnovative",
     description:
-      " Awarded Key Contributor at PhysTech Hackday 2025 for impactful contributions, innovation, and active participation in technology-driven problem solving.",
-    image: "binnovative.jpg",
+      "Awarded Key Contributor at PhysTech Hackday 2025 for impactful contributions, innovation, and active participation in technology-driven problem solving.",
+    image: "https://placeholder.svg?height=400&width=600&query=key contributor certificate",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -285,15 +292,15 @@ const certificatesData = [
     issuer: "Mckinsey.org",
     description:
       "Successfully completed the McKinsey.org Forward Program, gaining practical skills in problem-solving, communication, adaptability, and professional growth.",
-    image: "Mckinsey Badge.jpg",
+    image: "https://placeholder.svg?height=400&width=600&query=mckinsey forward program badge",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
     title: "Code Carnage",
-    issuer: "GFG and Developers Community , Chandigarh University",
+    issuer: "GFG and Developers Community, Chandigarh University",
     description:
       "GeeksforGeeks and Alexa Developers Community, Chandigarh University, enhancing problem-solving and competitive programming skills.",
-    image: "code carnage issuer.jpg",
+    image: "https://placeholder.svg?height=400&width=600&query=coding competition certificate",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
 ]
@@ -309,11 +316,13 @@ function openCertificate(index) {
   document.getElementById("certModalLink").href = cert.link
 
   modal.classList.add("active")
+  document.body.style.overflow = "hidden"
 }
 
 function closeCertificate() {
   const modal = document.getElementById("certificateModal")
   modal.classList.remove("active")
+  document.body.style.overflow = ""
 }
 
 // Project Modal Functions
@@ -321,9 +330,9 @@ const projectsData = [
   {
     title: "Fit Tracker Pro",
     description:
-      "Fit Tracker Pro is a modern, responsive web application designed to help users monitor their fitness activities and health trends in a visually engaging way. Developed using HTML, CSS, JavaScript, Particle.js, and Chart.js, the platform offers an intuitive dashboard with interactive charts and animations for better data visualization. Inspired by the growing need for accessible fitness tracking tools, the project focuses on delivering a seamless user experience while integrating modern front-end technologies.",
-    image: "Fi tracker pro2.png",
-    tags: [ "HTML" ,"PARTICLE.JS", "CHART.js", "JAVASCRIPT", "CSS3"],
+      "Fit Tracker Pro is a modern, responsive web application designed to help users monitor their fitness activities and health trends in a visually engaging way. Developed using HTML, CSS, JavaScript, Particle.js, and Chart.js, the platform offers an intuitive dashboard with interactive charts and animations for better data visualization.",
+    image: "https://placeholder.svg?height=400&width=600&query=fitness tracker dashboard",
+    tags: ["HTML", "PARTICLE.JS", "CHART.js", "JAVASCRIPT", "CSS3"],
     repo: "https://github.com/Piyush667-gif/Fit-Tracker-Pro",
     live: "https://fit-tracker-pro.vercel.app/",
   },
@@ -331,7 +340,7 @@ const projectsData = [
     title: "Rent Chain",
     description:
       "RentChain is a blockchain-powered property rental platform that brings transparency, trust, and automation to rental agreements, property management, and verification.",
-    image: "rent chain2.png",
+    image: "https://placeholder.svg?height=400&width=600&query=blockchain rental platform",
     tags: ["HTML", "SUPABASE", "CSS3", "Javascript"],
     repo: "https://github.com/Piyush667-gif/RENT-CHAIN-",
     live: "https://rent-chain-innovatrix.vercel.app/",
@@ -340,8 +349,8 @@ const projectsData = [
     title: "Mood Tracker",
     description:
       "Real-time weather app with location-based forecasts, hourly and weekly predictions, beautiful UI with dynamic backgrounds, and weather alerts. Integrates with multiple weather APIs for accuracy.",
-    image: "mood-tracker2.png",
-    tags: ["HTML",  "CSS3", "JAVASCRIPT"],
+    image: "https://placeholder.svg?height=400&width=600&query=mood tracker calendar app",
+    tags: ["HTML", "CSS3", "JAVASCRIPT"],
     repo: "https://github.com/Piyush667-gif/mood-tracker-calendar",
     live: "https://mood-tracker-calendar-iota.vercel.app/",
   },
@@ -367,11 +376,13 @@ function openProject(index) {
   })
 
   modal.classList.add("active")
+  document.body.style.overflow = "hidden"
 }
 
 function closeProject() {
   const modal = document.getElementById("projectModal")
   modal.classList.remove("active")
+  document.body.style.overflow = ""
 }
 
 // Close modals when clicking outside
@@ -417,16 +428,16 @@ const observer = new IntersectionObserver((entries) => {
   })
 }, observerOptions)
 
-document.querySelectorAll(".stat-card, .envelope-container, .certificate-card, .roadmap-item").forEach((el) => {
+document.querySelectorAll(".stat-item, .envelope-container, .certificate-card, .roadmap-item").forEach((el) => {
   el.style.opacity = "0"
   el.style.transform = "translateY(30px)"
   el.style.transition = "all 0.6s ease"
   observer.observe(el)
 })
+
 // Typing Animation for Code Editor (About Section)
 const typedCodeElements = document.querySelectorAll(".typed-code")
 
-// Define text variations with different syntax highlighting
 const codeVariations = [
   [
     { text: "const", color: "keyword" },
@@ -449,8 +460,8 @@ const codeVariations = [
     { text: ",", color: "punctuation" },
     { text: "'HTML'", color: "string" },
     { text: ",", color: "punctuation" },
-     { text: "'CSS'", color: "string" },
-     { text: " ]", color: "punctuation" },
+    { text: "'CSS'", color: "string" },
+    { text: " ]", color: "punctuation" },
   ],
   [
     { text: "  ", color: "punctuation" },
@@ -461,7 +472,6 @@ const codeVariations = [
   [{ text: "};", color: "punctuation" }],
 ]
 
-// Alternative code variations for repetition
 const codeVariations2 = [
   [
     { text: "const", color: "keyword" },
@@ -573,7 +583,6 @@ function startTypingAnimation() {
     }, delay)
   })
 
-  // Clear and restart with next variation
   setTimeout(() => {
     typedCodeElements.forEach((element) => {
       element.innerHTML = ""
@@ -585,7 +594,6 @@ function startTypingAnimation() {
   }, 8000)
 }
 
-// Start animation when page loads
 setTimeout(() => {
   if (typedCodeElements.length > 0) {
     startTypingAnimation()
