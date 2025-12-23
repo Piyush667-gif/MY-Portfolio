@@ -348,7 +348,7 @@ const projectsData = [
   {
     title: "Mood Tracker",
     description:
-      "Real-time weather app with location-based forecasts, hourly and weekly predictions, beautiful UI with dynamic backgrounds, and weather alerts. Integrates with multiple weather APIs for accuracy.",
+      " Capture your feelings effortlessly with our intuitive mood tracker. Log your emotions using emojis and visualize your mood patterns with a beautifully color-coded calendar. Whether you're feeling joyful, stressed, calm, or anything in between, our tracker helps you gain insights into your emotional well-being at a glance.",
     image: "mood-tracker2.png",
     tags: ["HTML", "CSS3", "JAVASCRIPT"],
     repo: "https://github.com/Piyush667-gif/mood-tracker-calendar",
@@ -599,6 +599,7 @@ setTimeout(() => {
     startTypingAnimation()
   }
 }, 3500)
+
 
 
 
