@@ -260,7 +260,7 @@ const certificatesData = [
     issuer: "GSSoC",
     description:
       "As a Contributor in GirlScript Summer of Code 2025, demonstrating strong commitment, collaboration, and open-source development skills.",
-    image: "https://placeholder.svg?height=400&width=600&query=GSSoC certificate badge",
+    image: "gssoc.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -268,7 +268,7 @@ const certificatesData = [
     issuer: "Prodigy Infotech",
     description:
       "Successfully completed a 1-month Web Development Internship at Prodigy Infotech with outstanding performance, gaining hands-on experience in real-world web projects.",
-    image: "https://placeholder.svg?height=400&width=600&query=web development internship certificate",
+    image: "LOR prodigy Infotech.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -276,7 +276,7 @@ const certificatesData = [
     issuer: "TechXNinjas",
     description:
       "Recognized as a Top 200 Team member in Paranox 2.0, a national-level innovation hackathon, for creativity, teamwork, and qualifying for the pre-final pitching round.",
-    image: "https://placeholder.svg?height=400&width=600&query=hackathon certificate",
+    image: "TechXNinjas.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -284,7 +284,7 @@ const certificatesData = [
     issuer: "binnovative",
     description:
       "Awarded Key Contributor at PhysTech Hackday 2025 for impactful contributions, innovation, and active participation in technology-driven problem solving.",
-    image: "https://placeholder.svg?height=400&width=600&query=key contributor certificate",
+    image: "binnovative.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -292,7 +292,7 @@ const certificatesData = [
     issuer: "Mckinsey.org",
     description:
       "Successfully completed the McKinsey.org Forward Program, gaining practical skills in problem-solving, communication, adaptability, and professional growth.",
-    image: "https://placeholder.svg?height=400&width=600&query=mckinsey forward program badge",
+    image: "Mckinsey Badge.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
   {
@@ -300,7 +300,7 @@ const certificatesData = [
     issuer: "GFG and Developers Community, Chandigarh University",
     description:
       "GeeksforGeeks and Alexa Developers Community, Chandigarh University, enhancing problem-solving and competitive programming skills.",
-    image: "https://placeholder.svg?height=400&width=600&query=coding competition certificate",
+    image: "code carnage issuer.jpg",
     link: "https://drive.google.com/drive/folders/1h_DlyVVtLpo5-R-z83HLbKYsmODChRQL",
   },
 ]
@@ -331,7 +331,7 @@ const projectsData = [
     title: "Fit Tracker Pro",
     description:
       "Fit Tracker Pro is a modern, responsive web application designed to help users monitor their fitness activities and health trends in a visually engaging way. Developed using HTML, CSS, JavaScript, Particle.js, and Chart.js, the platform offers an intuitive dashboard with interactive charts and animations for better data visualization.",
-    image: "https://placeholder.svg?height=400&width=600&query=fitness tracker dashboard",
+    image: "Fi tracker pro2.png",
     tags: ["HTML", "PARTICLE.JS", "CHART.js", "JAVASCRIPT", "CSS3"],
     repo: "https://github.com/Piyush667-gif/Fit-Tracker-Pro",
     live: "https://fit-tracker-pro.vercel.app/",
@@ -340,7 +340,7 @@ const projectsData = [
     title: "Rent Chain",
     description:
       "RentChain is a blockchain-powered property rental platform that brings transparency, trust, and automation to rental agreements, property management, and verification.",
-    image: "https://placeholder.svg?height=400&width=600&query=blockchain rental platform",
+    image: "rent chain2.png",
     tags: ["HTML", "SUPABASE", "CSS3", "Javascript"],
     repo: "https://github.com/Piyush667-gif/RENT-CHAIN-",
     live: "https://rent-chain-innovatrix.vercel.app/",
@@ -349,7 +349,7 @@ const projectsData = [
     title: "Mood Tracker",
     description:
       "Real-time weather app with location-based forecasts, hourly and weekly predictions, beautiful UI with dynamic backgrounds, and weather alerts. Integrates with multiple weather APIs for accuracy.",
-    image: "https://placeholder.svg?height=400&width=600&query=mood tracker calendar app",
+    image: "mood-tracker2.png",
     tags: ["HTML", "CSS3", "JAVASCRIPT"],
     repo: "https://github.com/Piyush667-gif/mood-tracker-calendar",
     live: "https://mood-tracker-calendar-iota.vercel.app/",
@@ -599,6 +599,7 @@ setTimeout(() => {
     startTypingAnimation()
   }
 }, 3500)
+
 
 
 
